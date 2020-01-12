@@ -16,7 +16,7 @@
                            <Button v-if="val.liked == true"  type="error"  shape="circle" icon="md-thumbs-up">已赞</Button>
 						   <Button v-else  shape="circle" icon="md-thumbs-up" @click="like()">有用</Button>
                         </div>
-						<div @click="submitAnswer(val.id)">
+						<div @click="submitAnswer(val.id,val.content)">
 						    <a>提交更好的答案</a>
 						</div>
                     </div>
@@ -74,7 +74,7 @@
 			openLand() {
 			    $(".landing").slideDown("fast");
 			},
-			submitAnswer(id) {
+			submitAnswer(id,content) {
 				const user = this.getStore("userId");
 			    if (user == null || user == undefined) {
 			        this.$Message['info']({
@@ -83,7 +83,7 @@
 			        })
 					this.openLand();
 			    }else{
-					this.$router.push({path:'/markdown',query:{supplement:id}});
+					this.$router.push({path:'/markdown',query:{supplement:id,content:content}});
 				}
 			    
 			},

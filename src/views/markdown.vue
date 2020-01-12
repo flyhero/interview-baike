@@ -64,6 +64,7 @@
 				this.$Message.error('你还未登录请登录！');
 			}
 			this.supplementId = this.$route.query.supplement;
+			this.content = this.$route.query.content
 		},
 		methods: {
 			handleOnSave({
