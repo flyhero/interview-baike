@@ -8,7 +8,7 @@
 					<div class="postinfo">
 						<p><span>阅读数:{{val.viewNum}}</span><span>|</span><span>点赞数:{{val.likeNum}}</span><span>|</span><span>创建于:{{val.createTime}}</span></p>
 					</div>
-                    <MarkdownPreview  v-if="val.description == null" theme="oneDark" :initialValue="val.content" copyCode copyBtnText="复制代码"/>
+                    <MarkdownPreview  v-if="val.description == null || val.description == ''" theme="oneDark" :initialValue="val.content" copyCode copyBtnText="复制代码"/>
                     <MarkdownPreview  v-else theme="oneDark" :initialValue="val.description + '<br><br>  ---下面答案--- <br>\n' +val.content" copyCode copyBtnText="复制代码"/>
 					<br>
 					<div class="rate">

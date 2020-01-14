@@ -12,7 +12,7 @@
 						</Col>
 						<Col :xs="21" :md="22">
 						<div class="search">
-							<search></search>
+							<search ref="searchChild"></search>
 						</div>
 						</Col>
 					</Row>
@@ -28,7 +28,7 @@
 				<Col span="16">
 				<List item-layout="vertical" v-if="lists.data">
 					<ListItem v-for="items in lists.data" :key="items.id">
-						<router-link :to="{name:'listsDetails',query:{id:items.id}}">
+						<router-link target="_blank" :to="{name:'listsDetails',query:{id:items.id}}">
 							<ListItemMeta :avatar="items.avatar" :title="items.title" :description="items.summary" />
 						</router-link>
 						<div class="labels">
@@ -48,7 +48,9 @@
 
 						</template>
 					</ListItem>
-					<Page v-if="lists.total>10" class="page" :total="lists.total" />
+					<!-- <Page v-if="lists.total>10" class="page" :total="lists.total" /> -->
+					<Page  :page-size="Number(lists.pageSize)"  v-if="Number(lists.total)> Number(lists.pageSize)"  @on-change="changeSearchPage" class="page" :total="Number(lists.total)" show-elevator />
+					
 				</List>
 				<div v-else class="null">
 					<Icon size="50" color="#e5e5e5" type="ios-folder-open" />
@@ -132,7 +134,6 @@
 			};
 		},
 		created() {
-			console.info("created")
 			listQuestionWeekPopular().then((res) => {
 				if (res.code == 200) {
 					this.hotList = res.result
@@ -158,6 +159,13 @@
 					})
 				}
 
+			},
+			changeSearchPage(pageNumber){
+				this.search({data:this.$refs.searchChild.val,current:pageNumber}).then((res) => {
+					if (res.code == 200) {
+					    this.lists = res.result
+					}
+				})
 			}
 		},
 		mounted() {

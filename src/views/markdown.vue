@@ -130,10 +130,12 @@
 			},
 			getTitle(data) {
 				this.title = data;
+				// this.content = this.$refs.data.supplementVal.content;
 			}
 
 		},
 		mounted() {
+			// this.content = this.$refs.data.supplementVal.content;
 			if (this.isMobile()) {
 				this.save = {
 					save: true,
