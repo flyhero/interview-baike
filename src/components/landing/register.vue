@@ -15,6 +15,9 @@
         <Input id="password2" v-model="password2" type="password" password placeholder="输入密码" />
         <Input id="passwordR" v-model="register.password" type="password" password placeholder="确认输入密码" />
         <button @click="submitRegister">立即注册并登录</button>
+		<div style="display: flex;">
+		     <div style="margin: 0px auto;"><a :src="github" style="font-size: 24px;"><Icon type="logo-github" size="24px"/></a></div>
+		</div>
         <div>
             <a href="javascript:;" @click="changeLand">已有账号立即登录</a>
         </div>

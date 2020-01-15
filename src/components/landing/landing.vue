@@ -15,6 +15,9 @@
         </div>
         <Input id="password" v-model="land.password" type="password" password placeholder="输入密码" />
         <button @click="submit">登录</button>
+		<div style="display: flex;">
+		     <div style="margin: 0px auto;"><a :src="github" style="font-size: 24px;"><Icon type="logo-github" size="24px"/></a></div>
+		</div>
         <div>
           <a href="javascript:;" @click="ChangeRegister">立即注册</a>
         </div>
@@ -38,6 +41,7 @@ export default {
         password: ""
       },
       msg: "",
+	  github: "",
       landing: true,
       register: false,
       data2:[]
