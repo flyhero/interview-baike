@@ -57,7 +57,7 @@
 			}
 		},
 		created() {
-			if (!this.getStore("userId")) {
+			if (!this.getStore("accessToken")) {
 				this.$router.push({
 					path: '/'
 				});

@@ -38,6 +38,17 @@ export const uploadQusetion = params => {
 	return postRequest("/files/questions", params);
 };
 
+// github授权地址
+export const githubUrl = () => {
+	return getRequest("/oauth/github/url");
+};
+
+// github登录
+export const githubOauth = params => {
+	return getRequest("/oauth/login/github",params);
+};
+
+
 // ======================题目==========================
 
 //查询题目

@@ -6,7 +6,7 @@
                 <Col span="16">
                     <h1 class="title" style="color: #262626;font-weight: 600;">{{val.title}}</h1>
 					<div class="postinfo">
-						<p><span>阅读数:{{val.viewNum}}</span><span>|</span><span>点赞数:{{val.likeNum}}</span><span>|</span><span>创建于:{{val.createTime}}</span></p>
+						<p><span>阅读: {{val.viewNum}}</span><span>点赞: {{val.likeNum}}</span><span>创建: {{val.createTime}}</span></p>
 					</div>
                     <MarkdownPreview  v-if="val.description == null || val.description == ''" theme="oneDark" :initialValue="val.content" copyCode copyBtnText="复制代码"/>
                     <MarkdownPreview  v-else theme="oneDark" :initialValue="val.description + '<br><br>  ---下面答案--- <br>\n' +val.content" copyCode copyBtnText="复制代码"/>
@@ -120,7 +120,7 @@
 		padding-left: 12px;
 		&>p{
 			&>span{
-				margin-right:5px;
+				margin-right:10px;
 			}
 		}
 	}

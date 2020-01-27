@@ -13,7 +13,7 @@
 				<div style="text-align: center;">
 					<p>本站共收录了<span>{{count}}</span>道题目</p>
 					<!-- <div > -->
-						<a @click="submitQuestion()">贡献题目</a>
+					<a @click="submitQuestion()">贡献题目</a>
 					<!-- </div> -->
 				</div>
 
@@ -29,7 +29,9 @@
 	// @ is an alias to /src
 	import search from "./../components/common/search";
 	import headerTop from './../components/common/headerTop'
-
+	import {
+		githubOauth
+	} from "@/api/index"
 	export default {
 		name: "index",
 		components: {
@@ -48,8 +50,17 @@
 				if (res.code == 200) {
 					this.count = res.result
 				}
-
-			})
+			});
+			const code = this.$route.query.code;
+			if (code != undefined && code != "") {
+				githubOauth({
+					code: code
+				}).then((res) => {
+					if (res.code == 200) {
+						this.session(res.result.token, res.result.userId);
+					}
+				});
+			}
 		},
 		methods: {
 			openLand() {
@@ -89,7 +100,7 @@
 				width: 75%;
 				display: block;
 				margin: 0 auto;
-				margin-bottom: 25px;
+				// margin-bottom: 25px;
 			}
 
 			&>div {

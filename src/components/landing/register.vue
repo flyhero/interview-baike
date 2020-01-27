@@ -28,7 +28,7 @@
                 <span>是否加入志愿者</span>
             </p>
             <div style="text-align:center">
-                <p>如java志愿者可以，收到其他人java相关的题目，回答可以快速增长声望，不清楚的也可以移交给其他人</p>
+                <p>如Java志愿者可以，收到其他人Java相关的题目，回答可以快速增长声望，不清楚的也可以移交给其他人</p>
                 <p>那么你是否要加入?</p>
             </div>
             <div slot="footer">
@@ -60,7 +60,8 @@
                 data2: [],
                 modal2: false,
                 modal_loading: false,
-                join:false
+                join:false,
+				github: ""
             };
         },
         methods: {

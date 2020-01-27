@@ -12,7 +12,7 @@
                     题目管理
                 </MenuItem>
 				<MenuItem name="scoreRecords" to="/scoreRecords">
-				    <Icon type="ios-bookmarks-outline"/>
+				    <Icon type="md-medal"/>
 				    分值记录
 				</MenuItem>
                 <MenuItem name="volunteers" to="/volunteers">

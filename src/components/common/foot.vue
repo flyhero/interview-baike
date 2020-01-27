@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <div>
+<!--        <div>
             <div>
                 <a href="" >联系电话：***********</a>
                 <a href="">加入我们：********</a>
@@ -19,7 +19,7 @@
                 <a href="" >联系电话：***********</a>
                 <a href="">加入我们：********</a>
             </div>
-        </div>
+        </div> -->
         <p> 沪ICP备******* 啦啦啦啦啦 </p>
     </div>
 </template>
