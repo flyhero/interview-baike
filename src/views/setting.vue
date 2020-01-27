@@ -7,7 +7,7 @@
                     <Icon type="ios-paper"/>
                     基础信息
                 </MenuItem>
-                <MenuItem v-if="isVolunteer" name="articles" to="/articles">
+                <MenuItem v-if="isVolunteer" name="questions" to="/questions">
                     <Icon type="ios-bookmarks-outline"/>
                     题目管理
                 </MenuItem>
@@ -24,7 +24,7 @@
                 <MenuItem name="basics" to="/setting">
                     基础信息
                 </MenuItem>
-                <MenuItem v-if="isVolunteer" name="articles" to="/articles">
+                <MenuItem v-if="isVolunteer" name="questions" to="/questions">
                     题目管理
                 </MenuItem>
 				<MenuItem name="scoreRecords" to="/scoreRecords">

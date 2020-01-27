@@ -21,7 +21,20 @@
 					</ListItem>
 				</List>
 			</TabPane>
-			<!-- <TabPane label="我的提交"  name="name2">标签二的内容</TabPane> -->
+			<TabPane v-if="isAdmin" label="题目审核" name="name2">
+
+				<Collapse v-for="item in waitingCheckQuestions.data" :key="item.id">
+					<Panel :name="item.id">
+						{{item.title}}
+						<Button style="float: right;" shape="circle" @click="passQ(item.id)">通过</Button>
+						<div slot="content">
+							<MarkdownPreview theme="oneDark" :initialValue="item.content" copyCode copyBtnText="复制代码" />
+						</div>
+					</Panel>
+				</Collapse>
+				<Page :page-size="Number(waitingCheckQuestions.pageSize)" v-if="Number(waitingCheckQuestions.total)> Number(waitingCheckQuestions.pageSize)"
+				 @on-change="changeWaitingCheckQ" class="Page" :total="Number(waitingCheckQuestions.total)" show-elevator />
+			</TabPane>
 		</Tabs>
 		<Modal v-model="isLook" title="退回理由" @on-ok="ok">
 			<textarea v-model="reason" placeholder="退回理由" rows="3" style="width: 100%;"></textarea>
@@ -37,10 +50,11 @@
 		Modal
 	} from 'view-design';
 	import {
-		checkOps
+		checkOps,
+		listWaitingCheckQ
 	} from "@/api/index";
 	export default {
-		name: "articles",
+		name: "questions",
 		components: {
 			MarkdownPreview
 		},
@@ -49,10 +63,12 @@
 				repulseId: '',
 				reason: '',
 				lists: '',
+				waitingCheckQuestions: [],
+				isAdmin: false,
 				isLook: false,
 				label: (h) => {
 					return h('div', [
-						h('span', '审核中')
+						h('span', '答案审核')
 					])
 				}
 			}
@@ -63,7 +79,7 @@
 					this.lists = res.result
 					this.label = (h) => {
 						return h('div', [
-							h('span', '审核中'),
+							h('span', '答案审核'),
 							h('Badge', {
 								props: {
 									count: res.result == null || res.result == undefined ? 0 : res.result.length
@@ -72,8 +88,18 @@
 						])
 					}
 				}
-
-			})
+			});
+			listWaitingCheckQ({
+				current: 1,
+				size: 10
+			}).then((res) => {
+				if (res.code != 405) {
+					this.isAdmin = true;
+				}
+				if (res.code == 200){
+					this.waitingCheckQuestions = res.result;
+				}
+			});
 		},
 		methods: {
 			//打回
@@ -98,6 +124,22 @@
 			//确认打回
 			ok() {
 				this.$options.methods.changeState(this.repulseId, 'NOT_PASS', this.reason);
+			},
+			changeWaitingCheckQ(pageNumber) {
+				listWaitingCheckQ({
+					current: pageNumber
+				}).then((res) => {
+					if (res.code == 200) {
+						this.waitingCheckQuestions = res.result;
+					}
+				});
+			},
+			passQ(id) {
+				passQuestion(id).then((res) => {
+					if (res.code == 200) {
+						waitingCheckQuestions = res.result;
+					}
+				});
 			}
 		}
 	}

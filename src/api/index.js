@@ -96,6 +96,14 @@ export const listQuestionWeekPopular = () => {
     return getRequest("/v1/popular/week/questions");
 };
 
+//获取题目的审核
+export const listWaitingCheckQ = (params) => {
+    return getRequest("/qs",params);
+};
+// 题目审核通过
+export const passQuestion = (questionId) => {
+	return patchRequest("/qs/" + questionId);
+};
 
 // ======================标签==========================
 

@@ -6,7 +6,7 @@ import setting from "../views/setting";
 import markdown from "../views/markdown"
 import listsDetails from "../views/listsDetails"
 import basics from "./../components/set/basics"
-import articles from "./../components/set/articles"
+import questions from "./../components/set/questions"
 import scoreRecords from "./../components/set/scoreRecords"
 import volunteers from "./../components/set/volunteers"
 import checkContent from "../views/checkContent"
@@ -32,9 +32,9 @@ const routes = [{
 				component: basics
 			},
 			{
-				path: "/articles",
-				name: "articles",
-				component: articles
+				path: "/questions",
+				name: "questions",
+				component: questions
 			},
 			{
 				path: "/scoreRecords",

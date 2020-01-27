@@ -13,7 +13,7 @@
                 </List>
                 <Page  v-if="Number(fameRecords.total)>Number(fameRecords.pageSize)" class="Page" @on-change="changeFamePage" :total="Number(fameRecords.total)"  :page-size="Number(fameRecords.pageSize)"  show-elevator />
             </TabPane>
-             <TabPane label="币值"  name="name2">
+            <!-- <TabPane label="币值"  name="name2">
                  <List>
                      <ListItem class="ListItem" v-for="(item,index) in coinRecords.data" :key="index">
                          <span>{{item.createTime.split(' ')[0]}} <br>{{item.createTime.split(' ')[1]}} </span>
@@ -23,8 +23,8 @@
                          </div>
                      </ListItem>
                  </List>
-                 <Page  :page-size="Number(fameRecords.pageSize)"  v-if="Number(coinRecords.total)> Number(fameRecords.pageSize)"  @on-change="changeCoinPage" class="Page" :total="Number(coinRecords.total)" show-elevator />
-             </TabPane>
+                 <Page  :page-size="Number(coinRecords.pageSize)"  v-if="Number(coinRecords.total)> Number(coinRecords.pageSize)"  @on-change="changeCoinPage" class="Page" :total="Number(coinRecords.total)" show-elevator />
+             </TabPane> -->
         </Tabs>
     </div>
 </template>
